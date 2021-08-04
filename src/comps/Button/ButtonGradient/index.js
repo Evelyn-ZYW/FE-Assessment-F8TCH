@@ -16,6 +16,7 @@ const Container = styled.div`
   text-align: center;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 const ButtonGradient = ({text}) => {
   return (

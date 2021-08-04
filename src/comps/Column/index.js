@@ -4,10 +4,10 @@ import styled from "styled-components";
 import Item from "../Item";
 
 const Container = styled.div``;
-const Column = () => {
+const Column = ({children}) => {
   return (
     <Container>
-      <Item />
+      {children}
     </Container>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import MagIcon from "../../../public/image/Search.png";
+import magIcon from "../../../public/image/search.png";
 
 const Container = styled.div`
   min-width: 100%;
@@ -40,6 +40,7 @@ const InputBox = styled.div`
     object-fit: contain;
     position: absolute;
     right: 10px;
+    cursor: pointer;
   }
 `;
 const Search = () => {
@@ -48,7 +49,7 @@ const Search = () => {
       <label>SEARCH AN ITEM</label>
       <InputBox>
         <input type="search" id="item-search" placeholder="SEARCH" />
-        <img src={MagIcon} alt="" />
+        <img src={magIcon} alt="" />
       </InputBox>
     </Container>
   );

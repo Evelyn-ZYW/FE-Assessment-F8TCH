@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.input`
@@ -10,8 +10,18 @@ const Container = styled.input`
   max-width: 100%;
   outline: none;
 `;
-const Input = () => {
-  return <Container type="text" id="item" placeholder="ENTER ITEM" required></Container>;
+const Input = ({onChangeInput}) => {
+  // const [item, setItem] = useState("");
+  return (
+    <Container
+      type="text"
+      id="item"
+      placeholder="ENTER ITEM"
+      required
+      // onChange={(e) => setItem(e.target.value)}
+      onChange={onChangeInput}
+    ></Container>
+  );
 };
 
 export default Input;

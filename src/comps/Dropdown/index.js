@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import Arrow from "../../../public/image/Arrow.png";
+import arrow from "../../../public/image/arrow.png";
 
 const Outer = styled.div`
   min-width: 100%;
   max-width: 100%;
+  position: relative;
 `;
 const Container = styled.div`
   box-sizing: border-box;
@@ -17,6 +18,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 
   & > img {
     min-width: 15px;
@@ -27,9 +29,12 @@ const Container = styled.div`
 `;
 const Drop = styled.div`
   margin-top: 5px;
+  min-width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   border: 4px solid #fff;
   background-color: #b8c8db;
+  position: absolute;
 
   & > div {
     color: #000;
@@ -46,9 +51,8 @@ const Option = styled.p`
   max-height: 100%;
   display: flex;
   align-items: center;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   padding-left: 10px;
-  transition: all 0.3s ease;
 
   &:hover {
     background-color: #8fffee;
@@ -56,23 +60,41 @@ const Option = styled.p`
   }
 `;
 
-const Dropdown = () => {
+const Dropdown = ({ onColumn }) => {
+  const [expand, setExpand] = useState(false);
+
+  const toggleDropdown = () => {
+    setExpand(!expand);
+  };
+
+  //making an array of existing columns - to be mapped to the dropdown menu
+  const columnName = ["COLUMN 1", "COLUMN 2"];
+
   return (
     <Outer>
-      <Container>
+      <Container onClick={toggleDropdown}>
         <span>CHOOSE COLUMN</span>
-        <img src={Arrow} alt="" />
+        <img src={arrow} alt="" />
       </Container>
-      <Drop>
-        <div>
-          <Option className="bolder">COLUMN 1</Option>
-        </div>
-        <div>
-          <Option className="bolder">COLUMN 2</Option>
-        </div>
-      </Drop>
+      {expand && (
+        <Drop onMouseLeave={() => setExpand(false)}>
+          {columnName.map((col, index) => (
+            <div
+              key={index}
+              onClick={() => {
+                onColumn(col);
+                toggleDropdown();
+              }}
+            >
+              <Option>{col}</Option>
+            </div>
+          ))}
+        </Drop>
+      )}
     </Outer>
   );
 };
-
+Dropdown.defaultProps = {
+  onColumn: () => {},
+};
 export default Dropdown;

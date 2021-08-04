@@ -12,15 +12,22 @@ const Container = styled.div`
   text-align: center;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  
+  &:hover {
+    border: 4px solid #b8c8db;
+    color: #b8c8db;
+  }
 `;
-const ButtonOutline = ({text}) => {
+const ButtonOutline = ({ text, onAddItem }) => {
   return (
-    <Container>
+    <Container onClick={onAddItem}>
       <h6>{text}</h6>
     </Container>
   );
 };
 ButtonOutline.defaultProps = {
-  text: "ADD ITEM"
-}
+  text: "ADD ITEM",
+};
 export default ButtonOutline;

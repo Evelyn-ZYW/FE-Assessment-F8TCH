@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import ButtonGradient from "./comps/Button/ButtonGradient";
@@ -7,6 +7,7 @@ import Input from "./comps/Input";
 import Dropdown from "./comps/Dropdown";
 import ButtonOutline from "./comps/Button/ButtonOutline";
 import Search from "./comps/Search";
+import Item from "./comps/Item";
 
 const Content = styled.div`
   margin: 10%;
@@ -78,6 +79,33 @@ const Right = styled.div`
 `;
 
 export function App() {
+  const columnName = ["COLUMN 1", "COLUMN 2"];
+
+  //the value entered in the input
+  const [input, setInput] = useState("");
+
+  //the column that is being selected
+  const [column, setColumn] = useState("");
+
+  //set column to what is selected
+  const handleColumn = (col) => {
+    setColumn(col);
+  };
+
+  //an array of inputs showing in the column
+  const [inputArrayOne, setInputArrayOne] = useState([]);
+  const [inputArrayTwo, setInputArrayTwo] = useState([]);
+
+  //add the item to the selected column
+  const handleAddInput = () => {
+    console.log("column selected: ", column);
+    if (column === "COLUMN 1") {
+      setInputArrayOne((inputArrayOne) => inputArrayOne.concat(input));
+    } else if (column === "COLUMN 2")
+      setInputArrayTwo((inputArrayTwo) => inputArrayTwo.concat(input));
+  };
+  // console.log("inputArrayOne: ", inputArrayOne, typeof inputArrayOne);
+  // console.log("inputArrayTwo: ", inputArrayTwo, typeof inputArrayTwo);
   return (
     <Content>
       <Intro>
@@ -92,20 +120,44 @@ export function App() {
       <Panel>
         <Left>
           <div>
-            <Input />
-            <Dropdown />
+            <Input
+              onChangeInput={(e) => {
+                setInput(e.target.value);
+              }}
+            />
+            <Dropdown onColumn={handleColumn} />
           </div>
           <div>
-            <ButtonOutline />
+            <ButtonOutline onAddItem={handleAddInput} />
             <Search />
           </div>
         </Left>
         <Right>
+          {/* {columnName.map((col, index) => (
+            <div key={index}>
+              <ItemHeader text={col} />
+              {column === "COLUMN 1"
+                ? inputArrayOne.map((input, index) => (
+                    <Item key={index} text={input} />
+                  ))
+                : null}
+            </div>
+          ))} */}
           <div>
             <ItemHeader text="COLUMN 1" />
+            {column === "COLUMN 1"
+              ? inputArrayOne.map((input, index) => (
+                  <Item key={index} text={input} />
+                ))
+              : null}
           </div>
           <div>
             <ItemHeader text="COLUMN 2" />
+            {column === "COLUMN 2"
+              ? inputArrayTwo.map((input, index) => (
+                  <Item key={index} text={input} />
+                ))
+              : null}
           </div>
         </Right>
       </Panel>
