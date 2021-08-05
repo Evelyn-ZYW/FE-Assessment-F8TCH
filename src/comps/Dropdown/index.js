@@ -60,7 +60,7 @@ const Option = styled.p`
   }
 `;
 
-const Dropdown = ({ onColumn }) => {
+const Dropdown = ({ onColumn, text, value }) => {
   const [expand, setExpand] = useState(false);
 
   const toggleDropdown = () => {
@@ -73,7 +73,7 @@ const Dropdown = ({ onColumn }) => {
   return (
     <Outer>
       <Container onClick={toggleDropdown}>
-        <span>CHOOSE COLUMN</span>
+        <span>{text}</span>
         <img src={arrow} alt="" />
       </Container>
       {expand && (
@@ -86,7 +86,7 @@ const Dropdown = ({ onColumn }) => {
                 toggleDropdown();
               }}
             >
-              <Option>{col}</Option>
+              <Option value={value}>{col}</Option>
             </div>
           ))}
         </Drop>
@@ -96,5 +96,6 @@ const Dropdown = ({ onColumn }) => {
 };
 Dropdown.defaultProps = {
   onColumn: () => {},
+  text: "CHOOSE COLUMN"
 };
 export default Dropdown;

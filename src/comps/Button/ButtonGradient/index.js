@@ -18,9 +18,9 @@ const Container = styled.div`
   justify-content: center;
   cursor: pointer;
 `;
-const ButtonGradient = ({text}) => {
+const ButtonGradient = ({text, onClick}) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <h4>{text}</h4>
     </Container>
   )

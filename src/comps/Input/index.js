@@ -10,16 +10,16 @@ const Container = styled.input`
   max-width: 100%;
   outline: none;
 `;
-const Input = ({onChangeInput}) => {
+const Input = ({onChangeInput, value}) => {
   // const [item, setItem] = useState("");
   return (
     <Container
       type="text"
       id="item"
+      value={value}
       placeholder="ENTER ITEM"
-      required
-      // onChange={(e) => setItem(e.target.value)}
       onChange={onChangeInput}
+      required
     ></Container>
   );
 };
