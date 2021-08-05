@@ -40,27 +40,36 @@ const Submit = styled.input`
 `;
 const NewItemForm = () => {
   const { addItem } = useContext(ItemContext);
-  const { showModal } = useContext(ItemContext);
+  // const { showModal } = useContext(ItemContext);
   const [desc, setDesc] = useState("");
   const [column, setColumn] = useState("");
+
+  const handleOption = (col) => {
+    setColumn(col);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem(desc, column);
-    showModal();
+    // showModal();
     setDesc("");
     setColumn("");
   };
+
   return (
     <Container onSubmit={handleSubmit}>
       <Type
         type="text"
-        placeholder=""
+        placeholder="ENTER ITEM"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
         required
       />
-      <Dropdown />
+      <Dropdown
+        value={column}
+        text={column ? column : "CHOOSE COLUMN"}
+        onOption={handleOption}
+      />
       <Submit type="submit" placeholder="ADD ITEM" value="ADD ITEM" />
     </Container>
   );

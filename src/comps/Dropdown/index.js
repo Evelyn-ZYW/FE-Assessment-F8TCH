@@ -61,16 +61,13 @@ const Option = styled.p`
   }
 `;
 
-const Dropdown = ({ onColumn, text, value }) => {
-  const {items} = useContext(ItemContext);
+const Dropdown = ({ onColumn, text, onOption, value }) => {
+  const { columns, items } = useContext(ItemContext);
   const [expand, setExpand] = useState(false);
 
   const toggleDropdown = () => {
     setExpand(!expand);
   };
-
-  //making an array of existing columns - to be mapped to the dropdown menu
-  const columnName = ["COLUMN 1", "COLUMN 2"];
 
   return (
     <Outer>
@@ -80,7 +77,7 @@ const Dropdown = ({ onColumn, text, value }) => {
       </Container>
       {expand && (
         <Menu onMouseLeave={() => setExpand(false)}>
-          {columnName.map((col, index) => (
+          {columns.map((col, index) => (
             <div
               key={index}
               onClick={() => {
@@ -88,7 +85,9 @@ const Dropdown = ({ onColumn, text, value }) => {
                 toggleDropdown();
               }}
             >
-              <Option value={col}>{col}</Option>
+              <Option value={value} onClick={() => onOption(col)}>
+                {col}
+              </Option>
             </div>
           ))}
         </Menu>
@@ -98,6 +97,7 @@ const Dropdown = ({ onColumn, text, value }) => {
 };
 Dropdown.defaultProps = {
   onColumn: () => {},
+  onOption: () => {},
   text: "CHOOSE COLUMN",
 };
 export default Dropdown;

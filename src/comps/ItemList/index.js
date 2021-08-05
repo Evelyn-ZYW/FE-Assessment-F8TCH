@@ -48,7 +48,9 @@ const ItemList = () => {
           {items.length ? (
             <InnerCont>
               {items.map((item) => {
-                return <ItemRow item={item} key={item.id} />;
+                return item.column === column ? (
+                  <ItemRow item={item} key={item.id} />
+                ) : null;
               })}
             </InnerCont>
           ) : null}
