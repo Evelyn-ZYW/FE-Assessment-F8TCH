@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import crossWhite from "../../../public/image/crossWhite.png";
@@ -25,16 +26,17 @@ const Container = styled.div`
     cursor: pointer;
   }
 `;
-const Item = ({ text, onRemove }) => {
+const ItemRow = ({ item }) => {
+  const { removeItem } = useContext(ItemContext);
   return (
     <Container>
-      <span>{text}</span>
-      <img src={crossGrey} alt="" onClick={onRemove}/>
+      <span>{item.desc}</span>
+      <img src={crossGrey} alt="" onClick={() => removeItem(item.id)} />
     </Container>
   );
 };
-Item.defaultProps = {
+ItemRow.defaultProps = {
   text: "ITEM",
 };
 
-export default Item;
+export default ItemRow;

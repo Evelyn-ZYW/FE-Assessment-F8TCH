@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import arrow from "../../../public/image/arrow.png";
@@ -27,7 +28,7 @@ const Container = styled.div`
     margin-right: 10px;
   }
 `;
-const Drop = styled.div`
+const Menu = styled.div`
   margin-top: 5px;
   min-width: 100%;
   max-width: 100%;
@@ -61,6 +62,7 @@ const Option = styled.p`
 `;
 
 const Dropdown = ({ onColumn, text, value }) => {
+  const {items} = useContext(ItemContext);
   const [expand, setExpand] = useState(false);
 
   const toggleDropdown = () => {
@@ -77,7 +79,7 @@ const Dropdown = ({ onColumn, text, value }) => {
         <img src={arrow} alt="" />
       </Container>
       {expand && (
-        <Drop onMouseLeave={() => setExpand(false)}>
+        <Menu onMouseLeave={() => setExpand(false)}>
           {columnName.map((col, index) => (
             <div
               key={index}
@@ -86,16 +88,16 @@ const Dropdown = ({ onColumn, text, value }) => {
                 toggleDropdown();
               }}
             >
-              <Option value={value}>{col}</Option>
+              <Option value={col}>{col}</Option>
             </div>
           ))}
-        </Drop>
+        </Menu>
       )}
     </Outer>
   );
 };
 Dropdown.defaultProps = {
   onColumn: () => {},
-  text: "CHOOSE COLUMN"
+  text: "CHOOSE COLUMN",
 };
 export default Dropdown;
