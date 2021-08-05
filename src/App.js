@@ -187,7 +187,7 @@ export function App() {
           since.
         </Desc>
       </Intro>
-      <ButtonGradient />
+      <ButtonGradient onClick={handleAddInput}/>
       <Panel>
         <Left>
           <div>
