@@ -137,6 +137,9 @@ export function App() {
   //the column that is being selected
   const [column, setColumn] = useState("");
 
+  //the keyword that is being searched
+
+  const [keyword, setKeyword] = useState("");
   //set column to what is selected
   const handleColumn = (col) => {
     setColumn(col);
@@ -152,7 +155,7 @@ export function App() {
 
   //add the item to the selected column
   const handleAddInput = () => {
-    console.log("column selected: ", column);
+    // console.log("column selected: ", column);
     if (input && column) {
       if (column === "COLUMN 1") {
         setInputArrayOne((inputArrayOne) => inputArrayOne.concat(input));
@@ -181,6 +184,11 @@ export function App() {
   const handleRemoveTwo = (index) => {
     const newArrayTwo = inputArrayTwo.filter((item, i) => i !== index);
     setInputArrayTwo(newArrayTwo);
+  };
+  const handleSearch = (value) => {
+    console.log(value)
+    let filteredArray = inputArrayOne.filter((o, i) => o.includes(value));
+    setInputArrayOne(filteredArray);
   };
   // console.log("inputArrayOne: ", inputArrayOne, typeof inputArrayOne);
   // console.log("inputArrayTwo: ", inputArrayTwo, typeof inputArrayTwo);
@@ -212,7 +220,7 @@ export function App() {
           </div>
           <div>
             <ButtonOutline onAddItem={handleAddInput} />
-            <Search />
+            <Search onSearch={(e) => handleSearch(e.target.value)} />
           </div>
         </Left>
         <Right>

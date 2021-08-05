@@ -40,15 +40,19 @@ const InputBox = styled.div`
     object-fit: contain;
     position: absolute;
     right: 10px;
-    cursor: pointer;
   }
 `;
-const Search = () => {
+const Search = ({ onSearch }) => {
   return (
     <Container>
       <label>SEARCH AN ITEM</label>
       <InputBox>
-        <input type="search" id="item-search" placeholder="SEARCH" />
+        <input
+          type="search"
+          id="item-search"
+          placeholder="SEARCH"
+          onChange={onSearch}
+        />
         <img src={magIcon} alt="" />
       </InputBox>
     </Container>
