@@ -25,11 +25,11 @@ const Container = styled.div`
     cursor: pointer;
   }
 `;
-const Item = ({ text }) => {
+const Item = ({ text, onRemove }) => {
   return (
     <Container>
       <span>{text}</span>
-      <img src={crossGrey} alt="" />
+      <img src={crossGrey} alt="" onClick={onRemove}/>
     </Container>
   );
 };

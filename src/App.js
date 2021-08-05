@@ -159,7 +159,7 @@ export function App() {
         handleClearInput();
       } else if (column === "COLUMN 2")
         setInputArrayTwo((inputArrayTwo) => inputArrayTwo.concat(input));
-        handleClearInput();
+      handleClearInput();
     } else if (!input) {
       setDisplayOverlay(true);
       setMessage("Please enter the item name 🤔");
@@ -174,7 +174,14 @@ export function App() {
     setColumn("");
     console.log("Cleared!");
   };
-
+  const handleRemoveOne = (index) => {
+    const newArrayOne = inputArrayOne.filter((item, i) => i !== index);
+    setInputArrayOne(newArrayOne);
+  };
+  const handleRemoveTwo = (index) => {
+    const newArrayTwo = inputArrayTwo.filter((item, i) => i !== index);
+    setInputArrayTwo(newArrayTwo);
+  };
   // console.log("inputArrayOne: ", inputArrayOne, typeof inputArrayOne);
   // console.log("inputArrayTwo: ", inputArrayTwo, typeof inputArrayTwo);
   return (
@@ -187,7 +194,7 @@ export function App() {
           since.
         </Desc>
       </Intro>
-      <ButtonGradient onClick={handleAddInput}/>
+      <ButtonGradient onClick={handleAddInput} />
       <Panel>
         <Left>
           <div>
@@ -222,13 +229,21 @@ export function App() {
           <div>
             <ItemHeader text="COLUMN 1" />
             {inputArrayOne.map((input, index) => (
-              <Item key={index} text={input} />
+              <Item
+                key={index}
+                text={input}
+                onRemove={() => handleRemoveOne(index)}
+              />
             ))}
           </div>
           <div>
             <ItemHeader text="COLUMN 2" />
             {inputArrayTwo.map((input, index) => (
-              <Item key={index} text={input} />
+              <Item
+                key={index}
+                text={input}
+                onRemove={() => handleRemoveTwo(index)}
+              />
             ))}
           </div>
         </Right>
