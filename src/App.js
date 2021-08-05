@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import ItemContextProvider from "./contexts/ItemContext";
 import styled from "styled-components";
 
+import Intro from "./comps/Intro";
 import ButtonGradient from "./comps/Button/ButtonGradient";
 import NewItemForm from "./comps/NewItemForm";
 import Search from "./comps/Search";
 import ItemList from "./comps/ItemList";
-import Intro from "./comps/Intro";
 import Overlay from "./comps/Overlay";
 
 //styled-components
@@ -57,35 +57,6 @@ const Right = styled.div`
 `;
 
 export function App() {
-  //the value entered in the input
-  // const [input, setInput] = useStateWithLocalStorage("myValueInLocalStorage");
-  const [input, setInput] = useState("");
-
-  //the column that is being selected
-  const [column, setColumn] = useState("");
-
-  //the keyword that is being searched
-
-  const [keyword, setKeyword] = useState("");
-  //set column to what is selected
-  const handleColumn = (col) => {
-    setColumn(col);
-  };
-
-  //an array of inputs showing in the column
-  const [inputArrayOne, setInputArrayOne] = useState([]);
-  const [inputArrayTwo, setInputArrayTwo] = useState([]);
-
-  //set display for the overlay
-  const [displayOverlay, setDisplayOverlay] = useState(false);
-  const [message, setMessage] = useState("");
-
-  // setDisplayOverlay(true);
-  // setMessage("Please enter the item name 🤔");
-
-  // console.log("inputArrayOne: ", inputArrayOne, typeof inputArrayOne);
-  // console.log("inputArrayTwo: ", inputArrayTwo, typeof inputArrayTwo);
-
   return (
     <Content>
       <ItemContextProvider>

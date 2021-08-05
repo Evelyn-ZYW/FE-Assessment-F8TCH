@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export const ItemContext = createContext();
@@ -17,20 +17,30 @@ const ItemContextProvider = (props) => {
     { desc: "evelyn9", column: "COLUMN 2", id: 9 },
   ]);
 
+  //add item function
   const addItem = (desc, column) => {
     setItems([...items, { desc, column, id: uuidv4() }]);
   };
+
+  //remove item function
   const removeItem = (id) => {
     setItems(items.filter((item) => item.id !== id));
   };
+
+  //search item function
   const searchItem = (desc) => {
-    let filteredItems = items.filter((item)=>item.desc.includes(desc));
-    if(desc === ""){
-      setItems(items)
+    let filteredItems = items.filter((item) => item.desc.includes(desc));
+    if (desc === "") {
+      setItems(items);
     } else {
-      setItems(filteredItems)
+      setItems(filteredItems);
     }
   };
+  
+  //local storage
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   // const [displayOverlay, setDisplayOverlay] = useState(false);
   // const [message, setMessage] = useState("");
