@@ -14,11 +14,6 @@ const ItemContextProvider = (props) => {
 
   const addItem = (desc, column) => {
     setItems([...items, { desc, column, id: uuidv4() }]);
-    if (column === "COLUMN 1") {
-      setColumns("COLUMN 1");
-    } else if (column === "COLUMN 2") {
-      setColumns("COLUMN 2");
-    }
   };
   const removeItem = (id) => {
     setItems(items.filter((item) => item.id !== id));
