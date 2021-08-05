@@ -24,7 +24,12 @@ const ItemContextProvider = (props) => {
     setItems(items.filter((item) => item.id !== id));
   };
   const searchItem = (desc) => {
-    setItems(items.filter((item) => item.desc.includes(desc)));
+    let filteredItems = items.filter((item)=>item.desc.includes(desc));
+    if(desc === ""){
+      setItems(items)
+    } else {
+      setItems(filteredItems)
+    }
   };
 
   // const [displayOverlay, setDisplayOverlay] = useState(false);

@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import ItemContextProvider from "./contexts/ItemContext";
 import styled from "styled-components";
 
 import ButtonGradient from "./comps/Button/ButtonGradient";
-import ItemHeader from "./comps/ItemHeader";
 import NewItemForm from "./comps/NewItemForm";
 import Search from "./comps/Search";
 import ItemList from "./comps/ItemList";
-import ItemContextProvider, { ItemContext } from "./contexts/ItemContext";
 import Intro from "./comps/Intro";
 import Overlay from "./comps/Overlay";
 

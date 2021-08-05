@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
@@ -43,12 +43,13 @@ const InputBox = styled.div`
     right: 10px;
   }
 `;
-const Search = ({ onSearch }) => {
+const Search = () => {
   const { searchItem } = useContext(ItemContext);
 
   const handleSearch = (e) => {
     searchItem(e);
   };
+
   return (
     <Container>
       <label>SEARCH AN ITEM</label>
