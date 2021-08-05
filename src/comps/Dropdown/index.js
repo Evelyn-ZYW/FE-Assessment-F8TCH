@@ -20,6 +20,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  color: #79818f;
 
   & > img {
     min-width: 15px;
@@ -44,8 +45,8 @@ const Menu = styled.div`
     align-items: center;
   }
 `;
-const Option = styled.p`
-  color: #000;
+const Option = styled.span`
+  color: #79818f;
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;

@@ -1,40 +1,58 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import ItemRow from "../ItemRow";
 import ItemHeader from "../ItemHeader";
 
+// import crossWhite from "../../../public/image/crossWhite.png";
+// import crossGrey from "../../../public/image/crossGrey.png";
+
+// import "../../../public/image/crossWhite.png";
+// import "../../../public/image/crossGrey.png";
+
 const Container = styled.div`
-  border: 2px solid red;
   display: flex;
   min-width: 100%;
   max-width: 100%;
-  min-height: 100%;
-  max-height: 100%;
+  min-height: calc(76px * 6);
+  max-height: calc(76px * 8);
+
+  & > :nth-child(2) {
+    margin-left: -8.49px;
+  }
 `;
 const OuterCont = styled.div`
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
   align-items: center;
   flex: 1;
-
-  & > img {
-    min-width: 15px;
-    max-width: 15px;
-    border: 3px solid #79818f;
-    border-radius: 9.5px;
-    padding: 5px;
-    object-fit: contain;
-    margin-right: 10px;
-    cursor: pointer;
-  }
+  box-sizing: border-box;
+  border: 8.49px solid #fff;
 `;
 const InnerCont = styled.div`
   min-width: 100%;
   max-width: 100%;
+
+  & > :nth-child(odd) {
+    background-color: #ebebeb;
+    color: #79818f;
+
+    & > :nth-child(2) {
+      border: 3px solid #79818f;
+      background-image: url("../../../public/image/crossGrey.png");
+    }
+  }
+
+  & > :nth-child(even) {
+    background-color: #b6b6b8;
+    color: #fff;
+
+    & > :nth-child(2) {
+      border: 3px solid #fff;
+      background-image: url("../../../public/image/crossWhite.png");
+    }
+  }
 `;
 
 const ItemList = () => {
@@ -47,7 +65,7 @@ const ItemList = () => {
           <ItemHeader text={column} />
           {items.length ? (
             <InnerCont>
-              {items.map((item) => {
+              {items.map((item, index) => {
                 return item.column === column ? (
                   <ItemRow item={item} key={item.id} />
                 ) : null;

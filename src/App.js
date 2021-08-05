@@ -25,7 +25,9 @@ const Panel = styled.div`
   justify-content: center;
   min-width: 100%;
   max-width: 100%;
-  height: 535px;
+  min-height: 535px;
+  max-height: 535px;
+  
   margin-top: 0.71cm;
 
   & > :nth-child(1) {
@@ -42,18 +44,11 @@ const Left = styled.div`
   justify-content: space-between;
 `;
 const Right = styled.div`
-  min-height: 100%;
+  // min-height: 100%;
+  // max-height: 100%;
   margin-left: 8.49px;
   display: flex;
-
-  & > div {
-    flex: 1;
-    box-sizing: border-box;
-    border: 8.49px solid #fff;
-  }
-  & > :nth-child(1) {
-    margin-right: -8.49px;
-  }
+  // box-sizing: border-box;
 `;
 
 export function App() {
