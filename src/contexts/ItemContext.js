@@ -5,6 +5,7 @@ export const ItemContext = createContext();
 
 const ItemContextProvider = (props) => {
   const [columns, setColumns] = useState(["COLUMN 1", "COLUMN 2"]);
+
   const [items, setItems] = useState([
     { desc: "evelyn1", column: "COLUMN 1", id: 1 },
     { desc: "evelyn2", column: "COLUMN 2", id: 2 },
@@ -36,10 +37,17 @@ const ItemContextProvider = (props) => {
       setItems(filteredItems);
     }
   };
-  
+
   //local storage
   useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
+    const data = localStorage.getItem("item");
+    if (data) {
+      setItems(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("item", JSON.stringify(items));
   }, [items]);
 
   // const [displayOverlay, setDisplayOverlay] = useState(false);
