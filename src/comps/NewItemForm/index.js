@@ -40,7 +40,8 @@ const Submit = styled.input`
 `;
 const NewItemForm = () => {
   const { addItem } = useContext(ItemContext);
-  // const { showModal } = useContext(ItemContext);
+  const { showModal } = useContext(ItemContext);
+
   const [desc, setDesc] = useState("");
   const [column, setColumn] = useState("");
 

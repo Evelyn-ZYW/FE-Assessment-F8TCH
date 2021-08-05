@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import magIcon from "../../../public/image/search.png";
@@ -43,6 +44,11 @@ const InputBox = styled.div`
   }
 `;
 const Search = ({ onSearch }) => {
+  const { searchItem } = useContext(ItemContext);
+
+  const handleSearch = (e) => {
+    searchItem(e);
+  };
   return (
     <Container>
       <label>SEARCH AN ITEM</label>
@@ -51,12 +57,15 @@ const Search = ({ onSearch }) => {
           type="search"
           id="item-search"
           placeholder="SEARCH"
-          onChange={onSearch}
+          onChange={(e) => handleSearch(e.target.value)}
         />
         <img src={magIcon} alt="" />
       </InputBox>
     </Container>
   );
+};
+Search.defaultProps = {
+  handleSearch: () => {},
 };
 
 export default Search;

@@ -10,6 +10,11 @@ const ItemContextProvider = (props) => {
     { desc: "evelyn2", column: "COLUMN 2", id: 2 },
     { desc: "evelyn3", column: "COLUMN 1", id: 3 },
     { desc: "evelyn4", column: "COLUMN 2", id: 4 },
+    { desc: "evelyn5", column: "COLUMN 2", id: 5 },
+    { desc: "evelyn6", column: "COLUMN 1", id: 6 },
+    { desc: "evelyn7", column: "COLUMN 1", id: 7 },
+    { desc: "evelyn8", column: "COLUMN 1", id: 8 },
+    { desc: "evelyn9", column: "COLUMN 2", id: 9 },
   ]);
 
   const addItem = (desc, column) => {
