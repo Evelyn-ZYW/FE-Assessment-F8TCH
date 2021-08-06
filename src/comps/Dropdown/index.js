@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import arrow from "../../../public/image/arrow.png";
-
-import { useMediaQuery } from "react-responsive";
 
 const Outer = styled.div`
   min-width: 100%;
@@ -12,17 +11,17 @@ const Outer = styled.div`
   position: relative;
 `;
 const Container = styled.div`
-  box-sizing: border-box;
-  border: 4px solid #fff;
-  background-color: #b8c8db;
-  height: 73px;
   min-width: 100%;
   max-width: 100%;
+  height: 73px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
+  border: 4px solid #fff;
+  background-color: #b8c8db;
+  color: #fff;
   cursor: pointer;
-  color: #79818f;
 
   & > img {
     min-width: 15px;
@@ -55,7 +54,7 @@ const Menu = styled.div`
   }
 `;
 const Option = styled.span`
-  color: #79818f;
+  color: #fff;
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;
@@ -67,6 +66,7 @@ const Option = styled.span`
 
   &:hover {
     background-color: #8fffee;
+    color: #79818f;
     cursor: pointer;
   }
   &.className {
@@ -77,7 +77,7 @@ const Option = styled.span`
 const Dropdown = ({ onColumn, text, onOption, value }) => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
 
-  const { columns, items } = useContext(ItemContext);
+  const { columns } = useContext(ItemContext);
   const [expand, setExpand] = useState(false);
 
   const toggleDropdown = () => {
@@ -121,6 +121,5 @@ const Dropdown = ({ onColumn, text, onOption, value }) => {
 Dropdown.defaultProps = {
   onColumn: () => {},
   onOption: () => {},
-  text: "CHOOSE COLUMN",
 };
 export default Dropdown;

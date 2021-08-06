@@ -10,17 +10,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  & > img {
-    min-width: 15px;
-    max-width: 15px;
-    border: ${(props) => (props.bdcolor ? props.bdcolor : "3px solid #79818f")};
-    border-radius: 9.5px;
-    padding: 5px;
-    object-fit: contain;
-    margin-right: 10px;
-    cursor: pointer;
-  }
 `;
 const ImgCont = styled.div`
   min-width: 10px;
@@ -37,7 +26,9 @@ const ImgCont = styled.div`
   cursor: pointer;
 `;
 const ItemRow = ({ item }) => {
+  
   const { removeItem } = useContext(ItemContext);
+
   return (
     <Container>
       <span>{item.desc}</span>

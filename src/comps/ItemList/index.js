@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
+import { useMediaQuery } from "react-responsive";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import ItemRow from "../ItemRow";
 import ItemHeader from "../ItemHeader";
 
-import { useMediaQuery } from "react-responsive";
 
 const Container = styled.div`
   display: flex;
@@ -17,11 +17,13 @@ const Container = styled.div`
   & > :nth-child(2) {
     margin-left: -8.49px;
   }
+
   &.small {
     & > :nth-child(2) {
       margin-left: 0;
       box-sizing: border-box;
       border-left: 2px solid #79818f;
+    }
   }
 `;
 
@@ -66,14 +68,22 @@ const InnerCont = styled.div`
 const ItemList = () => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
 
-  const { columns, items } = useContext(ItemContext);
+  const { columns, items, results, keyword } = useContext(ItemContext);
 
   return (
     <Container className={isSmallScreen ? "small" : null}>
       {columns.map((column) => (
         <OuterCont className={isSmallScreen ? "small" : null}>
           <ItemHeader text={column} />
-          {items.length ? (
+          {keyword ? (
+            <InnerCont>
+              {results.map((item) => {
+                return item.column === column ? (
+                  <ItemRow item={item} key={item.id} />
+                ) : null;
+              })}
+            </InnerCont>
+          ) : (
             <InnerCont>
               {items.map((item) => {
                 return item.column === column ? (
@@ -81,7 +91,7 @@ const ItemList = () => {
                 ) : null;
               })}
             </InnerCont>
-          ) : null}
+          )}
         </OuterCont>
       ))}
     </Container>

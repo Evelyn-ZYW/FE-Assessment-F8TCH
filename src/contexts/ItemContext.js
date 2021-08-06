@@ -4,8 +4,10 @@ import { v4 as uuidv4 } from "uuid";
 export const ItemContext = createContext();
 
 const ItemContextProvider = (props) => {
+  //state - initial columns
   const [columns, setColumns] = useState(["COLUMN 1", "COLUMN 2"]);
 
+  //state - initial items
   const [items, setItems] = useState([
     { desc: "evelyn1", column: "COLUMN 1", id: 1 },
     { desc: "evelyn2", column: "COLUMN 2", id: 2 },
@@ -18,37 +20,51 @@ const ItemContextProvider = (props) => {
     { desc: "evelyn9", column: "COLUMN 2", id: 9 },
   ]);
 
+  //state - search result
+  const [results, setResults] = useState([]);
+
+  //state - search keyword
+  const [keyword, setKeyword] = useState(false);
+
+  //state - popup modal & the message
   const [displayOverlay, setDisplayOverlay] = useState(false);
   const [message, setMessage] = useState("");
 
-  // const showModal = (desc, column) => {
-  //  setDisplayOverlay(true)
-  // };
-  //add item function
+  //function - add item
   const addItem = (desc, column) => {
     if (desc && column) {
       setItems([...items, { desc, column, id: uuidv4() }]);
-    } else if (desc === "") {
-      setDisplayOverlay(true);
-      setMessage("Please enter the item name 🤔");
-    } else if (column === "") {
+    } else {
+      showModal();
+    }
+  };
+
+  //function - show the modal
+  const showModal = (column) => {
+    if (!column) {
       setDisplayOverlay(true);
       setMessage("Please select the column 🤔");
     }
   };
 
-  //remove item function
+  //function - close the modal
+  const closeModal = () => {
+    setDisplayOverlay(false);
+  };
+
+  //function - remove item
   const removeItem = (id) => {
     setItems(items.filter((item) => item.id !== id));
   };
 
-  //search item function
+  //function - search item
   const searchItem = (desc) => {
-    let filteredItems = items.filter((item) => item.desc.includes(desc));
     if (desc === "") {
-      setItems(items);
+      setResults([]);
+      setKeyword(false);
     } else {
-      setItems(filteredItems);
+      setResults(items.filter((item) => item.desc.includes(desc)));
+      setKeyword(true);
     }
   };
 
@@ -72,8 +88,13 @@ const ItemContextProvider = (props) => {
         addItem,
         removeItem,
         searchItem,
+        results,
+        setResults,
         displayOverlay,
         message,
+        showModal,
+        closeModal,
+        keyword,
       }}
     >
       {props.children}

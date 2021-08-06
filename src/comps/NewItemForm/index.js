@@ -1,24 +1,21 @@
 import React, { useContext, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
-import Dropdown from "../Dropdown";
 
-import { useMediaQuery } from "react-responsive";
+import Dropdown from "../Dropdown";
+import Search from "../Search";
+
 
 const Container = styled.form`
   min-width: 100%;
   max-width: 100%;
-  min-height: 75%;
-  max-height: 75%;
+  min-height: 100%;
+  max-height: 100%;
   position: relative;
-
-  &.small {
-    min-height: null;
-    max-height: null;
-  }
 `;
 
-const Type = styled.input`
+const Input = styled.input`
   box-sizing: border-box;
   border: 4px solid #fff;
   background-color: #b8c8db;
@@ -48,7 +45,7 @@ const Submit = styled.input`
   justify-content: center;
   background: none;
   position: absolute;
-  bottom: 0;
+  bottom: 25.5%;
   cursor: pointer;
   transition: 0.3s;
 
@@ -69,18 +66,24 @@ const Submit = styled.input`
     }
   }
 `;
+const SearchCont = styled.div`
+  min-width: 100%;
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  &.small {
+    position: relative;
+  }
+`;
 
 const NewItemForm = () => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
 
-  const { addItem } = useContext(ItemContext);
+  const { addItem, searchItem } = useContext(ItemContext);
 
   const [desc, setDesc] = useState("");
   const [column, setColumn] = useState("");
-
-  const handleOption = (col) => {
-    setColumn(col);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -94,7 +97,7 @@ const NewItemForm = () => {
       className={isSmallScreen ? "small" : null}
       onSubmit={handleSubmit}
     >
-      <Type
+      <Input
         className={isSmallScreen ? "small" : null}
         type="text"
         placeholder="ENTER ITEM"
@@ -105,7 +108,7 @@ const NewItemForm = () => {
       <Dropdown
         value={column}
         text={column ? column : "CHOOSE COLUMN"}
-        onOption={handleOption}
+        onOption={(col)=>setColumn(col)}
       />
       <Submit
         className={isSmallScreen ? "small" : null}
@@ -113,6 +116,9 @@ const NewItemForm = () => {
         placeholder="ADD ITEM"
         value="ADD ITEM"
       />
+      <SearchCont className={isSmallScreen ? "small" : null}>
+        <Search onSearchItem={(e) => searchItem(e.target.value)} />
+      </SearchCont>
     </Container>
   );
 };

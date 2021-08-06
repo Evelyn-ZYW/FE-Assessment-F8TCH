@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemContextProvider from "./contexts/ItemContext";
 import styled from "styled-components";
 
 import Intro from "./comps/Intro";
 import Block from "./comps/Block";
 import NewItemForm from "./comps/NewItemForm";
-import Search from "./comps/Search";
 import ItemList from "./comps/ItemList";
 import Overlay from "./comps/Overlay";
 
@@ -23,10 +22,6 @@ const Content = styled.div`
   }
 `;
 
-const Panel = styled.div``;
-const Left = styled.div``;
-const Right = styled.div``;
-
 export function App() {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
   return (
@@ -34,16 +29,14 @@ export function App() {
       <ItemContextProvider>
         <Intro />
         {!isSmallScreen ? <Block /> : null}
-        <Panel className={isSmallScreen ? "s-panel" : "l-panel"}>
-          <Left className={isSmallScreen ? "s-left" : "l-left"}>
+        <div className={isSmallScreen ? "s-panel" : "l-panel"}>
+          <div className={isSmallScreen ? "s-control" : "l-control"}>
             <NewItemForm />
-            <Search />
-          </Left>
-          <Right className={isSmallScreen ? "s-right" : "l-right"}>
+          </div>
+          <div className={isSmallScreen ? "s-list" : "l-list"}>
             <ItemList />
-          </Right>
-        </Panel>
-
+          </div>
+        </div>
         <Overlay />
       </ItemContextProvider>
     </Content>
