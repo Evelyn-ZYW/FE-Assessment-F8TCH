@@ -20,7 +20,7 @@ const Container = styled.div`
 const Block = ({ text }) => {
   return (
     <Container>
-      <h4>{text}</h4>
+      <h5>{text}</h5>
     </Container>
   );
 };

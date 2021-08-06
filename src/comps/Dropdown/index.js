@@ -12,17 +12,17 @@ const Outer = styled.div`
   position: relative;
 `;
 const Container = styled.div`
-  box-sizing: border-box;
-  border: 4px solid #fff;
-  background-color: #b8c8db;
-  height: 73px;
   min-width: 100%;
   max-width: 100%;
+  height: 73px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
+  border: 4px solid #fff;
+  background-color: #b8c8db;
+  color: #fff;
   cursor: pointer;
-  color: #79818f;
 
   & > img {
     min-width: 15px;
@@ -55,7 +55,7 @@ const Menu = styled.div`
   }
 `;
 const Option = styled.span`
-  color: #79818f;
+  color: #fff;
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;
@@ -67,6 +67,7 @@ const Option = styled.span`
 
   &:hover {
     background-color: #8fffee;
+    color: #79818f;
     cursor: pointer;
   }
   &.className {

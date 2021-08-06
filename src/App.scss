@@ -24,7 +24,7 @@ html body {
     padding: 0;
     margin: 0;
   }
-  h1 {
+  h2 {
     font-size: 4.5rem;
     line-height: auto;
     font-family: "Merriweather", serif;
@@ -35,12 +35,12 @@ html body {
     font-weight: 400;
   }
   h5 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: auto;
     font-weight: 400;
   }
   h6 {
-    font-size: 1.3rem;
+    font-size: 1rem;
     line-height: auto;
     font-weight: 400;
   }
@@ -61,7 +61,7 @@ html body {
   }
   input::placeholder {
     font-size: 1rem;
-    color: #79818f;
+    color: #fff;
   }
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,
@@ -71,7 +71,6 @@ html body {
   }
   span {
     font-size: 1rem;
-    // color: #79818f;
     padding-left: 10px;
   }
 
@@ -88,8 +87,6 @@ html body {
     flex-direction: column;
     min-width: 100%;
     max-width: 100%;
-    // min-height: 526.8px;
-    // max-height: 526.8px;
     margin-top: 0.71cm;
   }
   .l-left {
