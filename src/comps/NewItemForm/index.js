@@ -1,21 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 import Dropdown from "../Dropdown";
+import Search from "../Search";
 
 import { useMediaQuery } from "react-responsive";
 
 const Container = styled.form`
   min-width: 100%;
   max-width: 100%;
-  min-height: 75%;
-  max-height: 75%;
+  min-height: 100%;
+  max-height: 100%;
   position: relative;
-
-  &.small {
-    min-height: null;
-    max-height: null;
-  }
 `;
 
 const Input = styled.input`
@@ -48,7 +44,7 @@ const Submit = styled.input`
   justify-content: center;
   background: none;
   position: absolute;
-  bottom: 0;
+  bottom: 25.5%;
   cursor: pointer;
   transition: 0.3s;
 
@@ -69,11 +65,21 @@ const Submit = styled.input`
     }
   }
 `;
+const SearchCont = styled.div`
+  min-width: 100%;
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  &.small {
+    position: relative;
+  }
+`;
 
 const NewItemForm = () => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
 
-  const { addItem } = useContext(ItemContext);
+  const { addItem, searchItem } = useContext(ItemContext);
 
   const [desc, setDesc] = useState("");
   const [column, setColumn] = useState("");
@@ -88,6 +94,12 @@ const NewItemForm = () => {
     setDesc("");
     setColumn("");
   };
+
+  // const handleSearch = (e) => {
+  //   if(e !== ""){
+  //     searchItem(e);
+  //   }
+  // };
 
   return (
     <Container
@@ -113,6 +125,9 @@ const NewItemForm = () => {
         placeholder="ADD ITEM"
         value="ADD ITEM"
       />
+      <SearchCont className={isSmallScreen ? "small" : null}>
+        <Search onSearchItem={(e) => searchItem(e.target.value)} />
+      </SearchCont>
     </Container>
   );
 };

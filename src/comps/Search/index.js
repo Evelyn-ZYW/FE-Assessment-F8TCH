@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ItemContext } from "../../contexts/ItemContext";
+import React from "react";
 import styled from "styled-components";
 
 import magIcon from "../../../public/image/search.png";
@@ -49,14 +48,8 @@ const InputBox = styled.div`
     right: 10px;
   }
 `;
-const Search = () => {
+const Search = ({ onSearchItem }) => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
-
-  const { searchItem } = useContext(ItemContext);
-
-  const handleSearch = (e) => {
-    searchItem(e);
-  };
 
   return (
     <Container>
@@ -64,19 +57,15 @@ const Search = () => {
       <InputBox>
         <input
           className={isSmallScreen ? "small" : null}
-          // value={}
           type="search"
           id="item-search"
           placeholder="SEARCH"
-          onChange={(e) => handleSearch(e.target.value)}
+          onChange={onSearchItem}
         />
         <img src={magIcon} alt="" />
       </InputBox>
     </Container>
   );
-};
-Search.defaultProps = {
-  handleSearch: () => {},
 };
 
 export default Search;

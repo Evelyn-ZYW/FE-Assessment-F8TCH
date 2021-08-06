@@ -33,7 +33,7 @@ export function App() {
         <div className={isSmallScreen ? "s-panel" : "l-panel"}>
           <div className={isSmallScreen ? "s-control" : "l-control"}>
             <NewItemForm />
-            <Search />
+            {/* <Search /> */}
           </div>
           <div className={isSmallScreen ? "s-list" : "l-list"}>
             <ItemList />

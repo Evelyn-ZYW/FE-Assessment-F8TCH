@@ -19,7 +19,6 @@ const Container = styled.div`
   }
 
   &.small {
-    
     & > :nth-child(2) {
       margin-left: 0;
       box-sizing: border-box;
@@ -69,14 +68,54 @@ const InnerCont = styled.div`
 const ItemList = () => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
 
-  const { columns, items } = useContext(ItemContext);
+  const { columns, items, results, keyword } = useContext(ItemContext);
 
   return (
+    // <Container className={isSmallScreen ? "small" : null}>
+    //   {columns.map((column) => (
+    //     <OuterCont className={isSmallScreen ? "small" : null}>
+    //       <ItemHeader text={column} />
+    //       {items.length ? (
+    //         <InnerCont>
+    //           {items.map((item) => {
+    //             return item.column === column ? (
+    //               <ItemRow item={item} key={item.id} />
+    //             ) : null;
+    //           })}
+    //         </InnerCont>
+    //       ) : null}
+    //     </OuterCont>
+    //   ))}
+    // </Container>
+
+    // <Container className={isSmallScreen ? "small" : null}>
+    //   {columns.map((column) => (
+    //     <OuterCont className={isSmallScreen ? "small" : null}>
+    //       <ItemHeader text={column} />
+    //       <InnerCont>
+    //         {items.map((item) => {
+    //           return item.column === column ? (
+    //             <ItemRow item={item} key={item.id} />
+    //           ) : null;
+    //         })}
+    //       </InnerCont>
+    //     </OuterCont>
+    //   ))}
+    // </Container>
+
     <Container className={isSmallScreen ? "small" : null}>
       {columns.map((column) => (
         <OuterCont className={isSmallScreen ? "small" : null}>
           <ItemHeader text={column} />
-          {items.length ? (
+          {keyword ? (
+            <InnerCont>
+              {results.map((item) => {
+                return item.column === column ? (
+                  <ItemRow item={item} key={item.id} />
+                ) : null;
+              })}
+            </InnerCont>
+          ) : (
             <InnerCont>
               {items.map((item) => {
                 return item.column === column ? (
@@ -84,10 +123,25 @@ const ItemList = () => {
                 ) : null;
               })}
             </InnerCont>
-          ) : null}
+          )}
         </OuterCont>
       ))}
     </Container>
+
+    // <Container className={isSmallScreen ? "small" : null}>
+    //   {columns.map((column) => (
+    //     <OuterCont className={isSmallScreen ? "small" : null}>
+    //       <ItemHeader text={column} />
+    //       <InnerCont>
+    //         {results.map((item) => {
+    //           return item.column === column ? (
+    //             <ItemRow item={item} key={item.id} />
+    //           ) : null;
+    //         })}
+    //       </InnerCont>
+    //     </OuterCont>
+    //   ))}
+    // </Container>
   );
 };
 

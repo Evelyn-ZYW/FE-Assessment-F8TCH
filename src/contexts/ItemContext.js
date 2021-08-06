@@ -18,6 +18,9 @@ const ItemContextProvider = (props) => {
     { desc: "evelyn9", column: "COLUMN 2", id: 9 },
   ]);
 
+  const [results, setResults] = useState([]);
+  const [keyword, setKeyword] = useState(false);
+
   const [displayOverlay, setDisplayOverlay] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -49,12 +52,15 @@ const ItemContextProvider = (props) => {
   //search item function
   const searchItem = (desc) => {
     if (desc === "") {
-      setItems(items);
+      setResults([]);
+      setKeyword(false);
     } else {
-      let filteredItems = items.filter((item) => item.desc.includes(desc));
-      setItems(filteredItems);
+      setResults(items.filter((item) => item.desc.includes(desc)));
+      setKeyword(true);
     }
   };
+  console.log("result: ", results);
+  console.log("items: ", items);
 
   //local storage
   useEffect(() => {
@@ -76,10 +82,13 @@ const ItemContextProvider = (props) => {
         addItem,
         removeItem,
         searchItem,
+        results,
+        setResults,
         displayOverlay,
         message,
         showModal,
         closeModal,
+        keyword
       }}
     >
       {props.children}
