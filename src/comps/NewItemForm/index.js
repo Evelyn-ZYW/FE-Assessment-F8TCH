@@ -29,7 +29,8 @@ const Submit = styled.input`
   align-items: center;
   justify-content: center;
   background: none;
-  margin-top: 50%;
+  margin-top: 40%;
+  margin-bottom: 10%;
   cursor: pointer;
   transition: 0.3s;
 

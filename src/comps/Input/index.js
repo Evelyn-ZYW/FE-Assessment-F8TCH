@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.input`
   box-sizing: border-box;
   border: 4px solid #fff;
-  background-color: #b8c8db;
+  background-color: #b6b6b8;
   height: 73px;
   min-width: 100%;
   max-width: 100%;

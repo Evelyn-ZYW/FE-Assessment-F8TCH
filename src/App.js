@@ -21,34 +21,29 @@ const Content = styled.div`
 
 const Panel = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   min-width: 100%;
   max-width: 100%;
-  min-height: 535px;
-  max-height: 535px;
-  
+  // min-height: 535px;
+  // max-height: 535px;
+  min-height: 526.8px;
+  max-height: 526.8px;
   margin-top: 0.71cm;
-
-  & > :nth-child(1) {
-    flex: 1;
-  }
-  & > :nth-child(2) {
-    flex: 2;
-  }
 `;
 const Left = styled.div`
+  flex: 1;
   min-height: 100%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 const Right = styled.div`
-  // min-height: 100%;
-  // max-height: 100%;
+  flex: 2;
+  min-height: 100%;
+  max-height: 100%;
   margin-left: 8.49px;
   display: flex;
-  // box-sizing: border-box;
+  overflow: hidden;
 `;
 
 export function App() {
