@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 import arrow from "../../../public/image/arrow.png";
 
+import { useMediaQuery } from "react-responsive";
+
 const Outer = styled.div`
   min-width: 100%;
   max-width: 100%;
@@ -29,14 +31,35 @@ const Container = styled.div`
     margin-right: 10px;
   }
 `;
+const ContainerS = styled.div`
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  background-color: #b8c8db;
+  height: 50px;
+  min-width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #79818f;
+
+  & > img {
+    min-width: 15px;
+    max-width: 15px;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+`;
 const Menu = styled.div`
   margin-top: 5px;
   min-width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  border: 4px solid #fff;
+  border: 2px solid #fff;
   background-color: #b8c8db;
   position: absolute;
+  z-index: 2;
 
   & > div {
     color: #000;
@@ -61,8 +84,26 @@ const Option = styled.span`
     cursor: pointer;
   }
 `;
+const OptionS = styled.span`
+  color: #79818f;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 10px;
+  z-index: 1;
 
+  &:hover {
+    background-color: #8fffee;
+    cursor: pointer;
+  }
+`;
 const Dropdown = ({ onColumn, text, onOption, value }) => {
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
+
   const { columns, items } = useContext(ItemContext);
   const [expand, setExpand] = useState(false);
 
@@ -72,10 +113,17 @@ const Dropdown = ({ onColumn, text, onOption, value }) => {
 
   return (
     <Outer>
-      <Container onClick={toggleDropdown}>
-        <span>{text}</span>
-        <img src={arrow} alt="" />
-      </Container>
+      {isSmallScreen ? (
+        <ContainerS onClick={toggleDropdown}>
+          <span>{text}</span>
+          <img src={arrow} alt="" />
+        </ContainerS>
+      ) : (
+        <Container onClick={toggleDropdown}>
+          <span>{text}</span>
+          <img src={arrow} alt="" />
+        </Container>
+      )}
       {expand && (
         <Menu onMouseLeave={() => setExpand(false)}>
           {columns.map((col, index) => (
@@ -86,9 +134,15 @@ const Dropdown = ({ onColumn, text, onOption, value }) => {
                 toggleDropdown();
               }}
             >
-              <Option value={value} onClick={() => onOption(col)}>
-                {col}
-              </Option>
+              {isSmallScreen ? (
+                <OptionS value={value} onClick={() => onOption(col)}>
+                  {col}
+                </OptionS>
+              ) : (
+                <Option value={value} onClick={() => onOption(col)}>
+                  {col}
+                </Option>
+              )}
             </div>
           ))}
         </Menu>

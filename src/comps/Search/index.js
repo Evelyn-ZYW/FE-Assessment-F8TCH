@@ -3,6 +3,7 @@ import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import magIcon from "../../../public/image/search.png";
+import { useMediaQuery } from "react-responsive";
 
 const Container = styled.div`
   min-width: 100%;
@@ -33,6 +34,11 @@ const InputBox = styled.div`
     border: 4px solid #fff;
     background-color: #b8c8db;
     outline: none;
+
+    &.small {
+      box-sizing: border-box;
+      border: 2px solid #fff;
+    }
   }
 
   & > img {
@@ -44,6 +50,8 @@ const InputBox = styled.div`
   }
 `;
 const Search = () => {
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
+
   const { searchItem } = useContext(ItemContext);
 
   const handleSearch = (e) => {
@@ -52,9 +60,10 @@ const Search = () => {
 
   return (
     <Container>
-      <label>SEARCH AN ITEM</label>
+      {!isSmallScreen ? <label>SEARCH AN ITEM</label> : null}
       <InputBox>
         <input
+          className={isSmallScreen && "small"}
           type="search"
           id="item-search"
           placeholder="SEARCH"

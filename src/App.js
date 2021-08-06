@@ -9,9 +9,13 @@ import Search from "./comps/Search";
 import ItemList from "./comps/ItemList";
 import Overlay from "./comps/Overlay";
 
+import { useMediaQuery } from "react-responsive";
+
 //styled-components
 const Content = styled.div`
-  margin: 10%;
+  margin: 5% 0;
+  min-width: 50%;
+  max-width: 75%;
 
   & > div {
     min-width: 100%;
@@ -19,45 +23,23 @@ const Content = styled.div`
   }
 `;
 
-const Panel = styled.div`
-  display: flex;
-  min-width: 100%;
-  max-width: 100%;
-  // min-height: 535px;
-  // max-height: 535px;
-  min-height: 526.8px;
-  max-height: 526.8px;
-  margin-top: 0.71cm;
-`;
-const Left = styled.div`
-  flex: 1;
-  min-height: 100%;
-  max-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-const Right = styled.div`
-  flex: 2;
-  min-height: 100%;
-  max-height: 100%;
-  margin-left: 8.49px;
-  display: flex;
-  overflow: hidden;
-`;
+const Panel = styled.div``;
+const Left = styled.div``;
+const Right = styled.div``;
 
 export function App() {
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
   return (
     <Content>
       <ItemContextProvider>
         <Intro />
-        <ButtonGradient />
-        <Panel>
-          <Left>
+        {!isSmallScreen ? <ButtonGradient /> : null}
+        <Panel className={isSmallScreen ? "s-panel" : "l-panel"}>
+          <Left className={isSmallScreen ? "s-left" : "l-left"}>
             <NewItemForm />
             <Search />
           </Left>
-          <Right>
+          <Right className={isSmallScreen ? "s-right" : "l-right"}>
             <ItemList />
           </Right>
         </Panel>
