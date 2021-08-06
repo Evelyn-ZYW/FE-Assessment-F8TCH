@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 const Block = ({ text, onClick }) => {
   return (
-    <Container onCLick={onClick}>
+    <Container onClick={onClick}>
       <h5>{text}</h5>
     </Container>
   );

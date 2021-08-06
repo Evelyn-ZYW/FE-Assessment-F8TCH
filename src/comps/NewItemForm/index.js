@@ -18,7 +18,7 @@ const Container = styled.form`
   }
 `;
 
-const Type = styled.input`
+const Input = styled.input`
   box-sizing: border-box;
   border: 4px solid #fff;
   background-color: #b8c8db;
@@ -94,7 +94,7 @@ const NewItemForm = () => {
       className={isSmallScreen ? "small" : null}
       onSubmit={handleSubmit}
     >
-      <Type
+      <Input
         className={isSmallScreen ? "small" : null}
         type="text"
         placeholder="ENTER ITEM"

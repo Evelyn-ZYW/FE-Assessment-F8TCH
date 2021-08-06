@@ -64,6 +64,7 @@ const Search = () => {
       <InputBox>
         <input
           className={isSmallScreen ? "small" : null}
+          // value={}
           type="search"
           id="item-search"
           placeholder="SEARCH"

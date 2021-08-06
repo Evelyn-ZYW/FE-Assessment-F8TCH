@@ -17,11 +17,14 @@ const Container = styled.div`
   & > :nth-child(2) {
     margin-left: -8.49px;
   }
+
   &.small {
+    
     & > :nth-child(2) {
       margin-left: 0;
       box-sizing: border-box;
       border-left: 2px solid #79818f;
+    }
   }
 `;
 

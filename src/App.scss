@@ -89,7 +89,7 @@ html body {
     max-width: 100%;
     margin-top: 0.71cm;
   }
-  .l-left {
+  .l-control {
     flex: 1;
     min-height: 100%;
     max-height: 100%;
@@ -97,12 +97,12 @@ html body {
     flex-direction: column;
     justify-content: space-between;
   }
-  .s-left {
+  .s-control {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
   }
-  .l-right {
+  .l-list {
     flex: 2;
     min-height: 100%;
     max-height: 100%;
@@ -110,7 +110,7 @@ html body {
     display: flex;
     overflow: hidden;
   }
-  .s-right {
+  .s-list {
     display: flex;
   }
 }

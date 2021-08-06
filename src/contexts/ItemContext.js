@@ -48,10 +48,10 @@ const ItemContextProvider = (props) => {
 
   //search item function
   const searchItem = (desc) => {
-    let filteredItems = items.filter((item) => item.desc.includes(desc));
     if (desc === "") {
       setItems(items);
     } else {
+      let filteredItems = items.filter((item) => item.desc.includes(desc));
       setItems(filteredItems);
     }
   };
