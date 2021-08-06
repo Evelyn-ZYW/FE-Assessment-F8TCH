@@ -43,7 +43,6 @@ export function App() {
             <ItemList />
           </Right>
         </Panel>
-
         <Overlay />
       </ItemContextProvider>
     </Content>

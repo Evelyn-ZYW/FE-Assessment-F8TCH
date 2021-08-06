@@ -21,20 +21,24 @@ const ItemContextProvider = (props) => {
   const [displayOverlay, setDisplayOverlay] = useState(false);
   const [message, setMessage] = useState("");
 
-  // const showModal = (desc, column) => {
-  //  setDisplayOverlay(true)
-  // };
   //add item function
   const addItem = (desc, column) => {
     if (desc && column) {
       setItems([...items, { desc, column, id: uuidv4() }]);
-    } else if (desc === "") {
-      setDisplayOverlay(true);
-      setMessage("Please enter the item name 🤔");
-    } else if (column === "") {
+    } else {
+      showModal();
+    }
+  };
+
+  //show the modal
+  const showModal = (column) => {
+    if (!column) {
       setDisplayOverlay(true);
       setMessage("Please select the column 🤔");
     }
+  };
+  const closeModal = () => {
+    setDisplayOverlay(false);
   };
 
   //remove item function
@@ -74,6 +78,8 @@ const ItemContextProvider = (props) => {
         searchItem,
         displayOverlay,
         message,
+        showModal,
+        closeModal,
       }}
     >
       {props.children}

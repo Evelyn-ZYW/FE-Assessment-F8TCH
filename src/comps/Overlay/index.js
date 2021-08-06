@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import { ItemContext } from "../../contexts/ItemContext";
-import styled from "styled-components";
-import Block from "../Block";
+import styled, { createGlobalStyle } from "styled-components";
 
 const Container = styled.div`
   position: fixed;
-  display: ${(props) => (props.displayOverlay ? "flex" : "none")};
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -16,7 +15,7 @@ const Container = styled.div`
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 2;
 `;
 const Popup = styled.div`
   color: #fff;
@@ -33,23 +32,21 @@ const Popup = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const ButtonCont = styled.div`
-  margin-top: 50px;
-  min-width: 200px;
-`;
 
 const Overlay = () => {
-  const { displayOverlay, message } = useContext(ItemContext);
-  return displayOverlay ? (
-    <Container>
-      <Popup>
-        <h4>{message}</h4>
-      </Popup>
-      <ButtonCont>
-        <Block text="Got it!" />
-      </ButtonCont>
-    </Container>
-  ) : null;
+  const { displayOverlay, closeModal, message } = useContext(ItemContext);
+
+  return (
+    <>
+      {displayOverlay ? (
+        <Container onClick={closeModal}>
+          <Popup>
+            <h4>{message}</h4>
+          </Popup>
+        </Container>
+      ) : null}
+    </>
+  );
 };
 
 export default Overlay;
