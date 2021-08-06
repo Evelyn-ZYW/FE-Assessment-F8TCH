@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
-import ButtonGradient from "../Button/ButtonGradient";
+import Block from "../Block";
 
 const Container = styled.div`
   position: fixed;
@@ -46,7 +46,7 @@ const Overlay = ({ message }) => {
         <h4>{message}</h4>
       </Popup>
       <ButtonCont>
-        <ButtonGradient text="Got it!" />
+        <Block text="Got it!" />
       </ButtonCont>
     </Container>
   ) : null;

@@ -17,15 +17,15 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const ButtonGradient = ({ text, onClick }) => {
+const Block = ({ text, onClick }) => {
   return (
     <Container onClick={onClick}>
       <h4>{text}</h4>
     </Container>
   );
 };
-ButtonGradient.defaultProps = {
+Block.defaultProps = {
   text: "ADD AN ITEM",
 };
 
-export default ButtonGradient;
+export default Block;

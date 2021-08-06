@@ -3,7 +3,7 @@ import ItemContextProvider from "./contexts/ItemContext";
 import styled from "styled-components";
 
 import Intro from "./comps/Intro";
-import ButtonGradient from "./comps/Button/ButtonGradient";
+import Block from "./comps/Block";
 import NewItemForm from "./comps/NewItemForm";
 import Search from "./comps/Search";
 import ItemList from "./comps/ItemList";
@@ -33,7 +33,7 @@ export function App() {
     <Content>
       <ItemContextProvider>
         <Intro />
-        {!isSmallScreen ? <ButtonGradient /> : null}
+        {!isSmallScreen ? <Block /> : null}
         <Panel className={isSmallScreen ? "s-panel" : "l-panel"}>
           <Left className={isSmallScreen ? "s-left" : "l-left"}>
             <NewItemForm />

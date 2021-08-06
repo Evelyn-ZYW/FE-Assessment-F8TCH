@@ -20,14 +20,14 @@ const Container = styled.div`
     color: #b8c8db;
   }
 `;
-const ButtonOutline = ({ text, onAddItem }) => {
+const Button = ({ text, onAddItem }) => {
   return (
     <Container onClick={onAddItem}>
       <h6>{text}</h6>
     </Container>
   );
 };
-ButtonOutline.defaultProps = {
+Button.defaultProps = {
   text: "ADD ITEM",
 };
-export default ButtonOutline;
+export default Button;
