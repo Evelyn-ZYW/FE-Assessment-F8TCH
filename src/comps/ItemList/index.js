@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
+import { useMediaQuery } from "react-responsive";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import ItemRow from "../ItemRow";
 import ItemHeader from "../ItemHeader";
 
-import { useMediaQuery } from "react-responsive";
 
 const Container = styled.div`
   display: flex;
@@ -71,38 +71,6 @@ const ItemList = () => {
   const { columns, items, results, keyword } = useContext(ItemContext);
 
   return (
-    // <Container className={isSmallScreen ? "small" : null}>
-    //   {columns.map((column) => (
-    //     <OuterCont className={isSmallScreen ? "small" : null}>
-    //       <ItemHeader text={column} />
-    //       {items.length ? (
-    //         <InnerCont>
-    //           {items.map((item) => {
-    //             return item.column === column ? (
-    //               <ItemRow item={item} key={item.id} />
-    //             ) : null;
-    //           })}
-    //         </InnerCont>
-    //       ) : null}
-    //     </OuterCont>
-    //   ))}
-    // </Container>
-
-    // <Container className={isSmallScreen ? "small" : null}>
-    //   {columns.map((column) => (
-    //     <OuterCont className={isSmallScreen ? "small" : null}>
-    //       <ItemHeader text={column} />
-    //       <InnerCont>
-    //         {items.map((item) => {
-    //           return item.column === column ? (
-    //             <ItemRow item={item} key={item.id} />
-    //           ) : null;
-    //         })}
-    //       </InnerCont>
-    //     </OuterCont>
-    //   ))}
-    // </Container>
-
     <Container className={isSmallScreen ? "small" : null}>
       {columns.map((column) => (
         <OuterCont className={isSmallScreen ? "small" : null}>
@@ -127,21 +95,6 @@ const ItemList = () => {
         </OuterCont>
       ))}
     </Container>
-
-    // <Container className={isSmallScreen ? "small" : null}>
-    //   {columns.map((column) => (
-    //     <OuterCont className={isSmallScreen ? "small" : null}>
-    //       <ItemHeader text={column} />
-    //       <InnerCont>
-    //         {results.map((item) => {
-    //           return item.column === column ? (
-    //             <ItemRow item={item} key={item.id} />
-    //           ) : null;
-    //         })}
-    //       </InnerCont>
-    //     </OuterCont>
-    //   ))}
-    // </Container>
   );
 };
 

@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ItemContext } from "../../contexts/ItemContext";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
 const Container = styled.div`
   position: fixed;

@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemContextProvider from "./contexts/ItemContext";
 import styled from "styled-components";
 
 import Intro from "./comps/Intro";
 import Block from "./comps/Block";
 import NewItemForm from "./comps/NewItemForm";
-import Search from "./comps/Search";
 import ItemList from "./comps/ItemList";
 import Overlay from "./comps/Overlay";
 
@@ -33,7 +32,6 @@ export function App() {
         <div className={isSmallScreen ? "s-panel" : "l-panel"}>
           <div className={isSmallScreen ? "s-control" : "l-control"}>
             <NewItemForm />
-            {/* <Search /> */}
           </div>
           <div className={isSmallScreen ? "s-list" : "l-list"}>
             <ItemList />

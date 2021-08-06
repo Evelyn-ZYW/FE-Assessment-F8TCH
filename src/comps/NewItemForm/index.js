@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
+
 import Dropdown from "../Dropdown";
 import Search from "../Search";
 
-import { useMediaQuery } from "react-responsive";
 
 const Container = styled.form`
   min-width: 100%;
@@ -84,22 +85,12 @@ const NewItemForm = () => {
   const [desc, setDesc] = useState("");
   const [column, setColumn] = useState("");
 
-  const handleOption = (col) => {
-    setColumn(col);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem(desc, column);
     setDesc("");
     setColumn("");
   };
-
-  // const handleSearch = (e) => {
-  //   if(e !== ""){
-  //     searchItem(e);
-  //   }
-  // };
 
   return (
     <Container
@@ -117,7 +108,7 @@ const NewItemForm = () => {
       <Dropdown
         value={column}
         text={column ? column : "CHOOSE COLUMN"}
-        onOption={handleOption}
+        onOption={(col)=>setColumn(col)}
       />
       <Submit
         className={isSmallScreen ? "small" : null}

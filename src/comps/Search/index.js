@@ -1,8 +1,8 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 
 import magIcon from "../../../public/image/search.png";
-import { useMediaQuery } from "react-responsive";
 
 const Container = styled.div`
   min-width: 100%;
