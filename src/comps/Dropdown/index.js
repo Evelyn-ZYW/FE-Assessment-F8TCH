@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
 import arrow from "../../../public/image/arrow.png";
+
+import { useMediaQuery } from "react-responsive";
 
 const Outer = styled.div`
   min-width: 100%;
@@ -19,6 +22,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  color: #79818f;
 
   & > img {
     min-width: 15px;
@@ -26,15 +30,22 @@ const Container = styled.div`
     object-fit: contain;
     margin-right: 10px;
   }
+
+  &.small {
+    border: 2px solid #fff;
+    height: 50px;
+  }
 `;
-const Drop = styled.div`
+
+const Menu = styled.div`
   margin-top: 5px;
   min-width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  border: 4px solid #fff;
+  border: 2px solid #fff;
   background-color: #b8c8db;
   position: absolute;
+  z-index: 2;
 
   & > div {
     color: #000;
@@ -43,8 +54,8 @@ const Drop = styled.div`
     align-items: center;
   }
 `;
-const Option = styled.p`
-  color: #000;
+const Option = styled.span`
+  color: #79818f;
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;
@@ -58,27 +69,34 @@ const Option = styled.p`
     background-color: #8fffee;
     cursor: pointer;
   }
+  &.className {
+    z-index: 1;
+  }
 `;
 
-const Dropdown = ({ onColumn, text, value }) => {
+const Dropdown = ({ onColumn, text, onOption, value }) => {
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
+
+  const { columns, items } = useContext(ItemContext);
   const [expand, setExpand] = useState(false);
 
   const toggleDropdown = () => {
     setExpand(!expand);
   };
 
-  //making an array of existing columns - to be mapped to the dropdown menu
-  const columnName = ["COLUMN 1", "COLUMN 2"];
-
   return (
     <Outer>
-      <Container onClick={toggleDropdown}>
+      <Container
+        className={isSmallScreen ? "small" : null}
+        onClick={toggleDropdown}
+      >
         <span>{text}</span>
         <img src={arrow} alt="" />
       </Container>
+
       {expand && (
-        <Drop onMouseLeave={() => setExpand(false)}>
-          {columnName.map((col, index) => (
+        <Menu onMouseLeave={() => setExpand(false)}>
+          {columns.map((col, index) => (
             <div
               key={index}
               onClick={() => {
@@ -86,16 +104,23 @@ const Dropdown = ({ onColumn, text, value }) => {
                 toggleDropdown();
               }}
             >
-              <Option value={value}>{col}</Option>
+              <Option
+                className={isSmallScreen ? "small" : null}
+                value={value}
+                onClick={() => onOption(col)}
+              >
+                {col}
+              </Option>
             </div>
           ))}
-        </Drop>
+        </Menu>
       )}
     </Outer>
   );
 };
 Dropdown.defaultProps = {
   onColumn: () => {},
-  text: "CHOOSE COLUMN"
+  onOption: () => {},
+  text: "CHOOSE COLUMN",
 };
 export default Dropdown;
