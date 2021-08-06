@@ -18,9 +18,23 @@ const ItemContextProvider = (props) => {
     { desc: "evelyn9", column: "COLUMN 2", id: 9 },
   ]);
 
+  const [displayOverlay, setDisplayOverlay] = useState(false);
+  const [message, setMessage] = useState("");
+
+  // const showModal = (desc, column) => {
+  //  setDisplayOverlay(true)
+  // };
   //add item function
   const addItem = (desc, column) => {
-    setItems([...items, { desc, column, id: uuidv4() }]);
+    if (desc && column) {
+      setItems([...items, { desc, column, id: uuidv4() }]);
+    } else if (desc === "") {
+      setDisplayOverlay(true);
+      setMessage("Please enter the item name 🤔");
+    } else if (column === "") {
+      setDisplayOverlay(true);
+      setMessage("Please select the column 🤔");
+    }
   };
 
   //remove item function
@@ -50,19 +64,6 @@ const ItemContextProvider = (props) => {
     localStorage.setItem("item", JSON.stringify(items));
   }, [items]);
 
-  // const [displayOverlay, setDisplayOverlay] = useState(false);
-  // const [message, setMessage] = useState("");
-
-  // const showModal = (desc, column) => {
-  //   if (desc === "") {
-  //     setDisplayOverlay(true);
-  //     setMessage("Please enter the item name 🤔");
-  //   } else if (column === "") {
-  //     setDisplayOverlay(true);
-  //     setMessage("Please select the column 🤔");
-  //   }
-  // };
-
   return (
     <ItemContext.Provider
       value={{
@@ -71,9 +72,8 @@ const ItemContextProvider = (props) => {
         addItem,
         removeItem,
         searchItem,
-        // displayOverlay,
-        // message,
-        // showModal,
+        displayOverlay,
+        message,
       }}
     >
       {props.children}

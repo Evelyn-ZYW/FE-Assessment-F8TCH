@@ -30,27 +30,13 @@ const Container = styled.div`
     object-fit: contain;
     margin-right: 10px;
   }
-`;
-const ContainerS = styled.div`
-  box-sizing: border-box;
-  border: 2px solid #fff;
-  background-color: #b8c8db;
-  height: 50px;
-  min-width: 100%;
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  color: #79818f;
 
-  & > img {
-    min-width: 15px;
-    max-width: 15px;
-    object-fit: contain;
-    margin-right: 10px;
+  &.small {
+    border: 2px solid #fff;
+    height: 50px;
   }
 `;
+
 const Menu = styled.div`
   margin-top: 5px;
   min-width: 100%;
@@ -83,24 +69,11 @@ const Option = styled.span`
     background-color: #8fffee;
     cursor: pointer;
   }
-`;
-const OptionS = styled.span`
-  color: #79818f;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  max-height: 100%;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  padding-left: 10px;
-  z-index: 1;
-
-  &:hover {
-    background-color: #8fffee;
-    cursor: pointer;
+  &.className {
+    z-index: 1;
   }
 `;
+
 const Dropdown = ({ onColumn, text, onOption, value }) => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
 
@@ -113,17 +86,14 @@ const Dropdown = ({ onColumn, text, onOption, value }) => {
 
   return (
     <Outer>
-      {isSmallScreen ? (
-        <ContainerS onClick={toggleDropdown}>
-          <span>{text}</span>
-          <img src={arrow} alt="" />
-        </ContainerS>
-      ) : (
-        <Container onClick={toggleDropdown}>
-          <span>{text}</span>
-          <img src={arrow} alt="" />
-        </Container>
-      )}
+      <Container
+        className={isSmallScreen ? "small" : null}
+        onClick={toggleDropdown}
+      >
+        <span>{text}</span>
+        <img src={arrow} alt="" />
+      </Container>
+
       {expand && (
         <Menu onMouseLeave={() => setExpand(false)}>
           {columns.map((col, index) => (
@@ -134,15 +104,13 @@ const Dropdown = ({ onColumn, text, onOption, value }) => {
                 toggleDropdown();
               }}
             >
-              {isSmallScreen ? (
-                <OptionS value={value} onClick={() => onOption(col)}>
-                  {col}
-                </OptionS>
-              ) : (
-                <Option value={value} onClick={() => onOption(col)}>
-                  {col}
-                </Option>
-              )}
+              <Option
+                className={isSmallScreen ? "small" : null}
+                value={value}
+                onClick={() => onOption(col)}
+              >
+                {col}
+              </Option>
             </div>
           ))}
         </Menu>

@@ -22,7 +22,7 @@ const Container = styled.div`
     cursor: pointer;
   }
 `;
-const Img = styled.div`
+const ImgCont = styled.div`
   min-width: 10px;
   max-width: 10px;
   min-height: 10px;
@@ -36,13 +36,12 @@ const Img = styled.div`
   border-radius: 8px;
   cursor: pointer;
 `;
-const ItemRow = ({ item, src, className }) => {
+const ItemRow = ({ item }) => {
   const { removeItem } = useContext(ItemContext);
   return (
     <Container>
-      <span className={className}>{item.desc}</span>
-      <Img onClick={() => removeItem(item.id)}></Img>
-      {/* <img src={src} alt="" onClick={() => removeItem(item.id)} /> */}
+      <span>{item.desc}</span>
+      <ImgCont onClick={() => removeItem(item.id)}></ImgCont>
     </Container>
   );
 };

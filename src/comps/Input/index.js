@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.input`
@@ -10,8 +10,7 @@ const Container = styled.input`
   max-width: 100%;
   outline: none;
 `;
-const Input = ({onChangeInput, value}) => {
-  // const [item, setItem] = useState("");
+const Input = ({ onChangeInput, value }) => {
   return (
     <Container
       type="text"

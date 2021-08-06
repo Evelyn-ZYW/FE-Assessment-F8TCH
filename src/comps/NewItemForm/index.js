@@ -11,12 +11,13 @@ const Container = styled.form`
   min-height: 75%;
   max-height: 75%;
   position: relative;
+
+  &.small {
+    min-height: null;
+    max-height: null;
+  }
 `;
-const ContainerS = styled.form`
-  min-width: 100%;
-  max-width: 100%;
-  position: relative;
-`;
+
 const Type = styled.input`
   box-sizing: border-box;
   border: 4px solid #fff;
@@ -26,17 +27,14 @@ const Type = styled.input`
   max-width: 100%;
   outline: none;
   margin-bottom: 0.71cm;
+
+  &.small {
+    border: 2px solid #fff;
+    height: 50px;
+    margin-bottom: 0.5cm;
+  }
 `;
-const TypeS = styled.input`
-  box-sizing: border-box;
-  border: 2px solid #fff;
-  background-color: #b8c8db;
-  height: 50px;
-  min-width: 100%;
-  max-width: 100%;
-  outline: none;
-  margin-bottom: 0.5cm;
-`;
+
 const Submit = styled.input`
   min-width: 100%;
   max-width: 100%;
@@ -58,34 +56,24 @@ const Submit = styled.input`
     border: 4px solid #b8c8db;
     color: #b8c8db;
   }
-`;
-const SubmitS = styled.input`
-  min-width: 100%;
-  max-width: 100%;
-  height: 50px;
-  box-sizing: border-box;
-  border: 3px solid #fff;
-  color: #fff;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  margin-top: 0.5cm;
 
-  cursor: pointer;
-  transition: 0.3s;
+  &.small {
+    margin-top: 0.5cm;
+    border: 3px solid #fff;
+    height: 50px;
+    position: relative;
 
-  &:hover {
-    border: 4px solid #b8c8db;
-    color: #b8c8db;
+    &:hover {
+      border: 3px solid #b8c8db;
+      color: #b8c8db;
+    }
   }
 `;
+
 const NewItemForm = () => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
 
   const { addItem } = useContext(ItemContext);
-  const { showModal } = useContext(ItemContext);
 
   const [desc, setDesc] = useState("");
   const [column, setColumn] = useState("");
@@ -97,47 +85,35 @@ const NewItemForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem(desc, column);
-    // showModal();
     setDesc("");
     setColumn("");
   };
 
   return (
-    <>
-      {isSmallScreen ? (
-        <ContainerS onSubmit={handleSubmit}>
-          <TypeS
-            type="text"
-            placeholder="ENTER ITEM"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            required
-          />
-          <Dropdown
-            value={column}
-            text={column ? column : "CHOOSE COLUMN"}
-            onOption={handleOption}
-          />
-          <SubmitS type="submit" placeholder="ADD ITEM" value="ADD ITEM" />
-        </ContainerS>
-      ) : (
-        <Container onSubmit={handleSubmit}>
-          <Type
-            type="text"
-            placeholder="ENTER ITEM"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            required
-          />
-          <Dropdown
-            value={column}
-            text={column ? column : "CHOOSE COLUMN"}
-            onOption={handleOption}
-          />
-          <Submit type="submit" placeholder="ADD ITEM" value="ADD ITEM" />
-        </Container>
-      )}
-    </>
+    <Container
+      className={isSmallScreen ? "small" : null}
+      onSubmit={handleSubmit}
+    >
+      <Type
+        className={isSmallScreen ? "small" : null}
+        type="text"
+        placeholder="ENTER ITEM"
+        value={desc}
+        onChange={(e) => setDesc(e.target.value)}
+        required
+      />
+      <Dropdown
+        value={column}
+        text={column ? column : "CHOOSE COLUMN"}
+        onOption={handleOption}
+      />
+      <Submit
+        className={isSmallScreen ? "small" : null}
+        type="submit"
+        placeholder="ADD ITEM"
+        value="ADD ITEM"
+      />
+    </Container>
   );
 };
 

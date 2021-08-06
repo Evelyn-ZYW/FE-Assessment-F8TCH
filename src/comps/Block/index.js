@@ -17,9 +17,9 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const Block = ({ text, onClick }) => {
+const Block = ({ text }) => {
   return (
-    <Container onClick={onClick}>
+    <Container>
       <h4>{text}</h4>
     </Container>
   );

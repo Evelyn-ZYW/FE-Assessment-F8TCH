@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
@@ -75,7 +75,7 @@ const ItemList = () => {
           <ItemHeader text={column} />
           {items.length ? (
             <InnerCont>
-              {items.map((item, index) => {
+              {items.map((item) => {
                 return item.column === column ? (
                   <ItemRow item={item} key={item.id} />
                 ) : null;
@@ -85,43 +85,6 @@ const ItemList = () => {
         </OuterCont>
       ))}
     </Container>
-    // <>
-    //   {isSmallScreen ? (
-    //     <ContainerS>
-    //       {columns.map((column) => (
-    //         <OuterContS>
-    //           <ItemHeader text={column} />
-    //           {items.length ? (
-    //             <InnerCont>
-    //               {items.map((item, index) => {
-    //                 return item.column === column ? (
-    //                   <ItemRow item={item} key={item.id} />
-    //                 ) : null;
-    //               })}
-    //             </InnerCont>
-    //           ) : null}
-    //         </OuterContS>
-    //       ))}
-    //     </ContainerS>
-    //   ) : (
-    //     <Container>
-    //       {columns.map((column) => (
-    //         <OuterCont>
-    //           <ItemHeader text={column} />
-    //           {items.length ? (
-    //             <InnerCont>
-    //               {items.map((item, index) => {
-    //                 return item.column === column ? (
-    //                   <ItemRow item={item} key={item.id} />
-    //                 ) : null;
-    //               })}
-    //             </InnerCont>
-    //           ) : null}
-    //         </OuterCont>
-    //       ))}
-    //     </Container>
-    //   )}
-    // </>
   );
 };
 

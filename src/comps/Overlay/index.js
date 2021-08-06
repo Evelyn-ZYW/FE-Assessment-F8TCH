@@ -38,8 +38,8 @@ const ButtonCont = styled.div`
   min-width: 200px;
 `;
 
-const Overlay = ({ message }) => {
-  const { displayOverlay } = useContext(ItemContext);
+const Overlay = () => {
+  const { displayOverlay, message } = useContext(ItemContext);
   return displayOverlay ? (
     <Container>
       <Popup>
