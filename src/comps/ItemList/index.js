@@ -6,6 +6,8 @@ import styled from "styled-components";
 import ItemRow from "../ItemRow";
 import ItemHeader from "../ItemHeader";
 
+import crossWhite from '../../../public/image/crossWhite.png';
+import crossGrey from '../../../public/image/crossGrey.png';
 
 const Container = styled.div`
   display: flex;
@@ -50,7 +52,7 @@ const InnerCont = styled.div`
 
     & > :nth-child(2) {
       border: 3px solid #79818f;
-      background-image: url("../../../public/image/crossGrey.png");
+      background-image: url(${crossGrey});
     }
   }
 
@@ -60,7 +62,7 @@ const InnerCont = styled.div`
 
     & > :nth-child(2) {
       border: 3px solid #fff;
-      background-image: url("../../../public/image/crossWhite.png");
+      background-image: url(${crossWhite});
     }
   }
 `;
