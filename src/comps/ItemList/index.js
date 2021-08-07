@@ -68,7 +68,7 @@ const InnerCont = styled.div`
 `;
 
 const ItemList = () => {
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 428px" });
 
   const { columns, items, results, keyword } = useContext(ItemContext);
 

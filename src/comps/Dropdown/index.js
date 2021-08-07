@@ -75,7 +75,7 @@ const Option = styled.span`
 `;
 
 const Dropdown = ({ onColumn, text, onOption, value }) => {
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 428px" });
 
   const { columns } = useContext(ItemContext);
   const [expand, setExpand] = useState(false);

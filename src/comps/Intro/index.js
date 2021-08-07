@@ -21,7 +21,7 @@ const Desc = styled.h5`
   }
 `;
 const Intro = () => {
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 428px" });
   return (
     <Container>
       <Title>Marvelous!</Title>

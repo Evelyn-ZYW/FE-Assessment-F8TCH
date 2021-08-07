@@ -78,7 +78,7 @@ const SearchCont = styled.div`
 `;
 
 const NewItemForm = () => {
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 600px" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 428px" });
 
   const { addItem, searchItem } = useContext(ItemContext);
 
