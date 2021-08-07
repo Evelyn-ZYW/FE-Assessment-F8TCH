@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
-import arrow from "../../../public/image/arrow.png";
+import arrow from "../../../public/image/Arrow.png";
 
 const Outer = styled.div`
   min-width: 100%;
