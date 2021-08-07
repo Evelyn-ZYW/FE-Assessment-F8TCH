@@ -49,7 +49,7 @@ const InputBox = styled.div`
   }
 `;
 const Search = ({ onSearchItem }) => {
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 428px" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 700px" });
 
   return (
     <Container>

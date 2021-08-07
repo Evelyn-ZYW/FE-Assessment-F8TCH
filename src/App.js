@@ -23,7 +23,7 @@ const Content = styled.div`
 `;
 
 export function App() {
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 428px" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 700px" });
   return (
     <Content>
       <ItemContextProvider>
