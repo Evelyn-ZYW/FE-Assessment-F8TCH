@@ -23,17 +23,17 @@ const Content = styled.div`
 `;
 
 export function App() {
-  const isSmallScreen = useMediaQuery({ query: "(max-width: 700px" });
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 700px)" });
   return (
     <Content>
       <ItemContextProvider>
         <Intro />
         {!isSmallScreen ? <Block /> : null}
-        <div className={isSmallScreen ? "s-panel" : "l-panel"}>
-          <div className={isSmallScreen ? "s-control" : "l-control"}>
+        <div id={isSmallScreen ? "s-panel" : "l-panel"}>
+          <div id={isSmallScreen ? "s-control" : "l-control"}>
             <NewItemForm />
           </div>
-          <div className={isSmallScreen ? "s-list" : "l-list"}>
+          <div id={isSmallScreen ? "s-list" : "l-list"}>
             <ItemList />
           </div>
         </div>
