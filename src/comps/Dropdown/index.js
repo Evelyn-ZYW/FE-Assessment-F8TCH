@@ -74,7 +74,7 @@ const Option = styled.span`
   }
 `;
 
-const Dropdown = ({ onColumn, text, onOption, value }) => {
+const Dropdown = ({ text, onOption, value }) => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 700px)" });
 
   const { columns } = useContext(ItemContext);
@@ -97,17 +97,15 @@ const Dropdown = ({ onColumn, text, onOption, value }) => {
       {expand && (
         <Menu onMouseLeave={() => setExpand(false)}>
           {columns.map((col, index) => (
-            <div
-              key={index}
-              onClick={() => {
-                onColumn(col);
-                toggleDropdown();
-              }}
-            >
+            <div>
               <Option
                 className={isSmallScreen ? "small" : null}
+                key={index}
                 value={value}
-                onClick={() => onOption(col)}
+                onClick={() => {
+                  onOption(col);
+                  toggleDropdown();
+                }}
               >
                 {col}
               </Option>
