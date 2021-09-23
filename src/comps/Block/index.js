@@ -6,16 +6,15 @@ const Container = styled.div`
   max-width: 100%;
   min-height: 55px;
   max-height: 55px;
-  background: linear-gradient(
-    0deg,
-    rgba(73, 84, 104, 1) 0%,
-    rgba(184, 200, 219, 1) 100%
-  );
+  background: #00C9FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #92FE9D, #00C9FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #92FE9D, #00C9FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
+  border-radius: 5px;
 `;
 
 const Block = ({ text, onClick }) => {

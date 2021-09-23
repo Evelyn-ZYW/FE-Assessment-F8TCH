@@ -5,8 +5,10 @@ import styled from "styled-components";
 const Container = styled.div`
   min-width: 100%;
   max-width: 100%;
-  height: 65px;
+  height: 55px;
   box-sizing: border-box;
+  border-radius: 5px;
+  margin: 5px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

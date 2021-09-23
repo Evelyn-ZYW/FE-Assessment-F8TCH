@@ -17,16 +17,18 @@ const Container = styled.form`
 
 const Input = styled.input`
   box-sizing: border-box;
-  border: 4px solid #fff;
-  background-color: #b8c8db;
-  height: 73px;
+  // border: 1px solid #e5e4e2;
+  border: 1px solid #F2C94C;
+  border-radius: 5px;
+  height: 55px;
   min-width: 100%;
   max-width: 100%;
   outline: none;
   margin-bottom: 0.71cm;
 
   &.small {
-    border: 2px solid #fff;
+    border: 1px solid #e5e4e2;
+    border: 1px solid #F2C94C;
     height: 50px;
     margin-bottom: 0.5cm;
   }
@@ -35,34 +37,34 @@ const Input = styled.input`
 const Submit = styled.input`
   min-width: 100%;
   max-width: 100%;
-  height: 73px;
+  height: 55px;
   box-sizing: border-box;
-  border: 4px solid #fff;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
   color: #fff;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
-  background: none;
+  background: #F2994A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   position: absolute;
   bottom: 25.5%;
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
-    border: 4px solid #b8c8db;
-    color: #b8c8db;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   }
 
   &.small {
     margin-top: 0.5cm;
-    border: 3px solid #fff;
     height: 50px;
     position: relative;
 
     &:hover {
-      border: 3px solid #b8c8db;
-      color: #b8c8db;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
   }
 `;

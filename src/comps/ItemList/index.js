@@ -17,14 +17,14 @@ const Container = styled.div`
   max-height: calc(76px * 8);
 
   & > :nth-child(2) {
-    margin-left: -8.49px;
+    margin-left: 8.49px;
   }
 
   &.small {
     & > :nth-child(2) {
-      margin-left: 0;
+      // margin-left: 0;
       box-sizing: border-box;
-      border-left: 2px solid #79818f;
+      // border-left: 2px solid #79818f;
     }
   }
 `;
@@ -34,8 +34,7 @@ const OuterCont = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
-  box-sizing: border-box;
-  border: 8.49px solid #fff;
+
 
   &.small {
     border: none;
@@ -45,23 +44,25 @@ const OuterCont = styled.div`
 const InnerCont = styled.div`
   min-width: 100%;
   max-width: 100%;
+  min-height: 90%;
+  max-height: 90%;
 
   & > :nth-child(odd) {
-    background-color: #ebebeb;
-    color: #79818f;
+    background-color: #F9F8F8;
+    color: #808080;
 
     & > :nth-child(2) {
-      border: 3px solid #79818f;
+      border: 2px solid #808080;
       background-image: url(${crossGrey});
     }
   }
 
   & > :nth-child(even) {
-    background-color: #b6b6b8;
-    color: #fff;
+    background-color: #e5e4e2;
+    color: #808080;
 
     & > :nth-child(2) {
-      border: 3px solid #fff;
+      border: 2px solid #fff;
       background-image: url(${crossWhite});
     }
   }

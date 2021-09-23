@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
+import crossYellow from '../../../public/image/crossYellow.png';
 
 const Container = styled.div`
   position: fixed;
@@ -18,19 +19,31 @@ const Container = styled.div`
   z-index: 2;
 `;
 const Popup = styled.div`
-  color: #fff;
-  background-color: #79818f;
+  color: #555555;
+  background-color: #FFF4DA;
   min-width: 500px;
   max-width: 500px;
   min-height: 200px;
   max-height: 200px;
   border-radius: 10px;
-  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px,
-    rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px,
-    rgb(255, 85, 85) 0px 0px 0px 15px;
+  // box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px,
+  //   rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px,
+  //   rgb(255, 85, 85) 0px 0px 0px 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  & > img {
+    min-width: 20px;
+    max-width: 20px;
+    object-fit: contain;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
 `;
 
 const Overlay = () => {
@@ -41,7 +54,8 @@ const Overlay = () => {
       {displayOverlay ? (
         <Container onClick={closeModal}>
           <Popup>
-            <h4>{message}</h4>
+            <img src={crossYellow} alt="" />
+            <h3>{message}</h3>
           </Popup>
         </Container>
       ) : null}

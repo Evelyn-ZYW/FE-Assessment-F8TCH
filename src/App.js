@@ -28,7 +28,7 @@ export function App() {
     <Content>
       <ItemContextProvider>
         <Intro />
-        {!isSmallScreen ? <Block /> : null}
+        {/* {!isSmallScreen ? <Block /> : null} */}
         <div id={isSmallScreen ? "s-panel" : "l-panel"}>
           <div id={isSmallScreen ? "s-control" : "l-control"}>
             <NewItemForm />

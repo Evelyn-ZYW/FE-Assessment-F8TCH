@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { ItemContext } from "../../contexts/ItemContext";
 import styled from "styled-components";
 
-import arrow from "../../../public/image/Arrow.png";
+import arrow from "../../../public/image/Arrow2.png";
 
 const Outer = styled.div`
   min-width: 100%;
@@ -13,14 +13,17 @@ const Outer = styled.div`
 const Container = styled.div`
   min-width: 100%;
   max-width: 100%;
-  height: 73px;
+  height: 55px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  border: 4px solid #fff;
-  background-color: #b8c8db;
-  color: #fff;
+  // border: 1px solid #808080;
+  border: 1px solid #F2C94C;
+
+  border-radius: 5px;
+  // background-color: #e5e4e2;
+  color: #808080;
   cursor: pointer;
 
   & > img {
@@ -31,8 +34,10 @@ const Container = styled.div`
   }
 
   &.small {
-    border: 2px solid #fff;
+    // border: 1px solid #e5e4e2;
+    border: 1px solid #F2C94C;
     height: 50px;
+    background-color: #fff;
   }
 `;
 
@@ -41,8 +46,11 @@ const Menu = styled.div`
   min-width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  border: 2px solid #fff;
-  background-color: #b8c8db;
+  // border: 1px solid #808080;
+  border: 1px solid #F2C94C;
+
+  border-radius: 5px;
+  background-color: #fff;
   position: absolute;
   z-index: 2;
 
@@ -54,7 +62,7 @@ const Menu = styled.div`
   }
 `;
 const Option = styled.span`
-  color: #fff;
+  color: #808080;
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;
@@ -63,14 +71,11 @@ const Option = styled.span`
   align-items: center;
   box-sizing: border-box;
   padding-left: 10px;
+  transition: 0.3s;
 
   &:hover {
-    background-color: #8fffee;
-    color: #79818f;
+    background-color: #FFF4DA;
     cursor: pointer;
-  }
-  &.className {
-    z-index: 1;
   }
 `;
 
