@@ -102,24 +102,24 @@ const NewItemForm = () => {
       <Input
         className={isSmallScreen ? "small" : null}
         type="text"
-        placeholder="ENTER ITEM"
+        placeholder="ENTER NAME"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
         required
       />
       <Dropdown
         value={column}
-        text={column ? column : "CHOOSE COLUMN"}
+        text={column ? column : "CHOOSE TEAM"}
         onOption={(col)=>setColumn(col)}
       />
       <Submit
         className={isSmallScreen ? "small" : null}
         type="submit"
-        placeholder="ADD ITEM"
-        value="ADD ITEM"
+        placeholder="ADD"
+        value="ADD"
       />
       <SearchCont className={isSmallScreen ? "small" : null}>
-        <Search onSearchItem={(e) => searchItem(e.target.value)} />
+        <Search onSearchItem={(e) => searchItem(e.target.value.toLowerCase())} />
       </SearchCont>
     </Container>
   );

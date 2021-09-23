@@ -58,7 +58,7 @@ const Search = ({ onSearchItem }) => {
 
   return (
     <Container>
-      {!isSmallScreen ? <label>SEARCH AN ITEM</label> : null}
+      {!isSmallScreen ? <label>SEARCH TEAM MEMBER</label> : null}
       <InputBox>
         <input
           className={isSmallScreen ? "small" : null}

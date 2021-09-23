@@ -13,18 +13,16 @@ const Container = styled.div`
   display: flex;
   min-width: 100%;
   max-width: 100%;
-  min-height: calc(76px * 6);
-  max-height: calc(76px * 8);
+  min-height: 100%;
+  max-height: 100%;
 
   & > :nth-child(2) {
-    margin-left: 8.49px;
+    margin-left: 10px;
   }
 
   &.small {
     & > :nth-child(2) {
-      // margin-left: 0;
       box-sizing: border-box;
-      // border-left: 2px solid #79818f;
     }
   }
 `;
@@ -34,7 +32,8 @@ const OuterCont = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
-
+  border: 1px solid #F2C94C;
+  border-radius: 5px;
 
   &.small {
     border: none;
@@ -44,8 +43,6 @@ const OuterCont = styled.div`
 const InnerCont = styled.div`
   min-width: 100%;
   max-width: 100%;
-  min-height: 90%;
-  max-height: 90%;
 
   & > :nth-child(odd) {
     background-color: #F9F8F8;

@@ -5,19 +5,19 @@ export const ItemContext = createContext();
 
 const ItemContextProvider = (props) => {
   //state - initial columns
-  const [columns, setColumns] = useState(["COLUMN 1", "COLUMN 2"]);
+  const [columns, setColumns] = useState(["TEAM 1", "TEAM 2"]);
 
   //state - initial items
   const [items, setItems] = useState([
-    { desc: "evelyn1", column: "COLUMN 1", id: 1 },
-    { desc: "evelyn2", column: "COLUMN 2", id: 2 },
-    { desc: "evelyn3", column: "COLUMN 1", id: 3 },
-    { desc: "evelyn4", column: "COLUMN 2", id: 4 },
-    { desc: "evelyn5", column: "COLUMN 2", id: 5 },
-    { desc: "evelyn6", column: "COLUMN 1", id: 6 },
-    { desc: "evelyn7", column: "COLUMN 1", id: 7 },
-    { desc: "evelyn8", column: "COLUMN 1", id: 8 },
-    { desc: "evelyn9", column: "COLUMN 2", id: 9 },
+    { desc: "evelyn", column: "TEAM 1", id: 1 },
+    { desc: "frank", column: "TEAM 2", id: 2 },
+    { desc: "kelvin", column: "TEAM 1", id: 3 },
+    { desc: "melody", column: "TEAM 2", id: 4 },
+    { desc: "luigi", column: "TEAM 2", id: 5 },
+    { desc: "mario", column: "TEAM 1", id: 6 },
+    { desc: "shaun", column: "TEAM 1", id: 7 },
+    { desc: "yulin", column: "TEAM 1", id: 8 },
+    { desc: "jessica", column: "TEAM 2", id: 9 },
   ]);
 
   //state - search result
@@ -43,7 +43,7 @@ const ItemContextProvider = (props) => {
   const showModal = (column) => {
     if (!column) {
       setDisplayOverlay(true);
-      setMessage("Please select the column 🤔");
+      setMessage("Please select the team 🤔");
     }
   };
 

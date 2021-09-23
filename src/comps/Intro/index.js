@@ -28,11 +28,11 @@ const Intro = () => {
     <Container>
       <Title></Title>
       <Desc className={isSmallScreen ? "small" : null}>
-        <h5>Step 1: enter a person's name.</h5>
+        <h5>Step 1: enter person's name.</h5>
         <h5>Step 2: choose a team.</h5>
-        <h5>Step 3: click "ADD" to display outcome on the list.</h5>
+        <h5>Step 3: click "ADD" to display team member on the list.</h5>
         <br/>
-        <h5>Note: you can search for a person from the search field.</h5>
+        <h5>Note: you can search for a person by typing on the search field.</h5>
       </Desc>
     </Container>
   );
